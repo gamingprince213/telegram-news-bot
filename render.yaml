@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: telegram-news-bot
+    runtime: docker
+    env: docker
+    plan: free
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        fromGroup: telegram-bot-secrets
+      - key: NEWS_API_KEY
+        fromGroup: telegram-bot-secrets
+    disk:
+      name: telegram-bot-data
+      mountPath: /data
+      sizeGB: 1
